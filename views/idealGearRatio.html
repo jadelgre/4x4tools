@@ -1,4 +1,19 @@
 	<div>
 		<h2> Calculate Ideal Gear Ratio </h2>
-		{{message}}
+		Enter your original gear ratio, original tire size, and new tire size then click calculate.
+		<br>
+		<div class="col-sm-4">
+			Original ratio: <input type="text" ng-model="originalRatio" placeholder="3.91"><br>
+		</div>
+		<div class="col-sm-4">	
+			Original tire size (inches): <input type="text" ng-model="originalTireSize" placeholder="31"><br>
+		</div>
+		<div class="col-sm-4">
+			New ratio: <input type="text" ng-model="newTireSize" placeholder="33" style="align-right"><br>
+		</div>
+		<input type="submit" ng-click="calculateNewRatio()">
+		<br>
+		<div>
+			<h2>{{message}}</h2>
+		</div>
 	</div>

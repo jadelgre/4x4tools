@@ -4,24 +4,39 @@ var sampleApp = angular.module('sampleApp', []);
 sampleApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/AddIdealGearRatio', {
+      when('/IdealGearRatio', {
     templateUrl: 'views/idealGearRatio.html',
     controller: 'idealGearRatioController'
       }).
-      when('/ShowOrders', {
+      when('/GearRatioTable', {
     templateUrl: 'views/gearRatioTable.html',
     controller: 'gearRatioTableController'
       }).
       otherwise({
-    redirectTo: '/AddIdealGearRatio'
+    redirectTo: '/IdealGearRatio'
       });
 }]);
 
 
 sampleApp.controller('idealGearRatioController', function($scope) {
     
-    $scope.message = 'calculating beep boop';
-    
+/*    $scope.message = "";
+    $scope.originalRatio = "";
+    $scope.originalTireSize = "";
+    $scope.newTireSize = "";
+    $scope.newRatio = "";*/
+
+    $scope.calculateNewRatio = function() {
+        $scope.newRatio = ($scope.newTireSize / $scope.originalTireSize) * $scope.originalRatio;
+        if(isNaN($scope.newRatio) || null === $scope.newRatio) {
+          $scope.message = "An error occurred. Please check your inputs!"
+          $scope.newRatio = ""
+        } else {
+          $scope.newRatio = $scope.newRatio.toFixed(2); // convert to 2 decimal places
+          $scope.message = "Your ideal gear ratio is " + $scope.newRatio;
+        }
+        
+    }
 });
 
 
